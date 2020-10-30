@@ -3,5 +3,7 @@ muttical_SOURCES = \
 		   muttical.cpp cmdline.cpp \
 		   cmdline.h database.cpp \
 		   database.h event.h \
-		   lineinfo.h
+		   event.cpp lineinfo.h \
+		   output.h output.cpp \
+		   interactive.cpp
 

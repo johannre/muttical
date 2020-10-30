@@ -20,9 +20,14 @@ static struct argp_option options[] =
 	{ "verbose", 			'v', 	0,         		0, "Be verbose." },
 	{ "zones",                      'z', 	0,			0, "Show timezone of event." },
 	{ "list-events", 		'l',	0,			0, "Show list of events." },
-	{ "event",                      'e',    "event_index",                      0, "Get access to specific event." },
+	{ "event",                      'e',    "event_index",          0, "Get access to specific event." },
 	{ "description",                'd',    0,                      0, "Shows description of each event." },
 	{ "participants",               'p',    0,                      0, "Shows organizer and participants." },
+	{ "save-events",                's',    "<filename>",           0, "Save events in a file." },
+	{ "force",                      'f',    0,                      0, "Force to overwrite an existing file with the -s statement." },
+	{ "append",                     'a',    0,                      0, "Append the event info to an existing file." }, 
+	{ "upcoming",                   'u',    0,                      0, "Shows upcoming and recently finished events." },
+	{ "interactive",                'i',    0,                      0, "Activates the interactive mode." },
 	{ 0 }
 };
 
@@ -55,6 +60,22 @@ static error_t parse_options(int key, char *arg, argp_state *state)
 		break;
 	case 'p':
 		cmdline.show_participants = true;
+		break;
+	case 's':
+		cmdline.save_events = true;
+		cmdline.filename = sarg;
+		break;
+	case 'f':
+		cmdline.force = true;
+		break;
+	case 'a':
+		cmdline.append = true;
+		break;
+	case 'u':
+		cmdline.upcoming = true;
+		break;
+	case 'i':
+		cmdline.interactive = true;
 		break;
 	case ARGP_KEY_ARG:
 		if (state->arg_num >= 2) // too many arguments

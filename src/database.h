@@ -16,6 +16,7 @@
 #include <tuple>
 
 class database {
+	friend class Event;
 	public:
 		database(std::string);
 		void convert_ics_to_vector(std::string &);
@@ -33,12 +34,7 @@ class database {
 		std::regex key_reg_both;
 		std::vector<std::string> keys_we_need; //helps us extract the relevant information
 		void build_from(std::string &);
-		void extract_time_from_event(Event &e);
-		void extract_summary(Event &e);
-		void extract_description(Event &e);
-		void extract_organizer(Event &e);
-		void extract_attendee(Event &e);
-		void extract_timezone_for_event(std::vector<std::pair<int, int>> event_indices);
+		void extract_timezone_for_event(Event &e, int end);
 		lineinfo *find_line(Event &e, const std::string &key);
 		lineinfo *find_line(const std::string &key);
 
