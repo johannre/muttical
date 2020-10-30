@@ -9,7 +9,7 @@ AM_INIT_AUTOMAKE(subdir-objects)
 AC_PROG_CC
 AC_PROG_CXX
 AC_LANG([C++])
-AX_CXX_COMPILE_STDCXX(11)
+AX_CXX_COMPILE_STDCXX(17)
 
 AC_CHECK_LIB([gtest], [main], [], [AC_MSG_WARN([Testing will not be supported]) ; muttical_has_gtest=false])
 AM_CONDITIONAL(HAVE_GTEST, [test x$muttical_has_gtest != xfalse])
